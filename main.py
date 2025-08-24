@@ -8,7 +8,6 @@ mp_face = mp.solutions.face_detection
 
 @app.post("/check-face/")
 async def check_face(video: UploadFile = File(...)):
-    # Save uploaded video to temp file
     temp = tempfile.NamedTemporaryFile(delete=False, suffix=".mp4")
     temp.write(await video.read())
     temp.close()
@@ -34,3 +33,6 @@ async def check_face(video: UploadFile = File(...)):
         "frames_checked": frame_count,
         "faces_detected_in_frames": face_count
     }
+
+//pip install fastapi uvicorn opencv-python mediapipe python-multipart
+
